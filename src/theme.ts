@@ -24,6 +24,17 @@ const theme = createTheme({
     fontWeightBold: 700,
     fontWeightMedium: 600,
     fontWeightRegular: 400,
+    h1: {
+      fontWeight: 700,
+      fontSize: 24,
+    },
+    subtitle1: {
+      fontSize: 18,
+    },
+    subtitle2: {
+      fontSize: 16,
+      fontWeight: 400,
+    },
   },
   components: {
     MuiButton: {
@@ -35,7 +46,7 @@ const theme = createTheme({
           fontSize: 16,
           padding: "12px 24px",
           width: ["contained", "outlined"].includes(ownerState.variant!)
-            ? 336
+            ? "100%"
             : "auto",
           height: ["contained", "outlined"].includes(ownerState.variant!)
             ? 48
@@ -59,6 +70,13 @@ const theme = createTheme({
                 borderWidth: 2,
               },
             }),
+        }),
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        h1: ({ theme }) => ({
+          color: theme.palette.dark["01"],
         }),
       },
     },
