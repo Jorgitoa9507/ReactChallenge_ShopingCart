@@ -3,4 +3,6 @@ export default interface ShoppingItem {
   name: string;
   minimunAmount: number;
   price: number;
+  image: string;
+  description: string;
 }

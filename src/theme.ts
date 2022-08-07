@@ -78,6 +78,9 @@ const theme = createTheme({
         h1: ({ theme }) => ({
           color: theme.palette.dark["01"],
         }),
+        subtitle1: {
+          lineHeight: 1.3,
+        },
       },
     },
   },
