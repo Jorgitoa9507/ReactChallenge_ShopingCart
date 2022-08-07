@@ -1,12 +1,7 @@
-import {
-  Button,
-  Container,
-  CssBaseline,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import Header from "./layout/Header";
+import MainContainer from "./layout/MainContainer";
 import theme from "./theme";
 
 function App() {
@@ -14,6 +9,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
+      <MainContainer />
     </ThemeProvider>
   );
 }
