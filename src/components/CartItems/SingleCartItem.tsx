@@ -4,7 +4,7 @@ import ShoppingItem from "../../models/ShoppingItem";
 import { DeleteOutline } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 
-const DeleteButton = styled(Button)(({ theme }) => ({
+export const DeleteButton = styled(Button)(({ theme }) => ({
   fontSize: 12,
   color: theme.palette.dark.main,
   fontWeight: theme.typography.fontWeightMedium,
