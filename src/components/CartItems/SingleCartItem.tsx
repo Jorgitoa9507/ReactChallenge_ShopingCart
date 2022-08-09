@@ -4,6 +4,7 @@ import ShoppingItem from "../../models/ShoppingItem";
 import { DeleteOutline } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import QuantitySelector from "./QuantitySelector";
+import { useShopingCartContext } from "../../context/shoppingCartState";
 
 export const DeleteButton = styled(Button)(({ theme }) => ({
   fontSize: 12,
@@ -22,9 +23,13 @@ export const DeleteButton = styled(Button)(({ theme }) => ({
 
 export interface SingleCartItemProps {
   cartItem: CartItem;
+  onDelete: (id: string) => void;
 }
 
-const SingleCartItem: React.FC<SingleCartItemProps> = ({ cartItem }) => {
+const SingleCartItem: React.FC<SingleCartItemProps> = ({
+  cartItem,
+  onDelete,
+}) => {
   const item = cartItem.item as ShoppingItem;
 
   return (
@@ -58,6 +63,7 @@ const SingleCartItem: React.FC<SingleCartItemProps> = ({ cartItem }) => {
             {/* cartItem.amount */}
           </Typography>
           <DeleteButton
+            onClick={() => onDelete(cartItem.id)}
             variant="text"
             disableRipple={true}
             startIcon={<DeleteOutline />}>

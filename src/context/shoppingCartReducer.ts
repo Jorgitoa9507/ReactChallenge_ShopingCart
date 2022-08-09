@@ -1,8 +1,9 @@
-import { ContextCartItem, State } from "./shoppingCartState";
+import CartItem from "../models/CartItem";
+import { State } from "./shoppingCartState";
 
 export interface SetCartItemsAction {
   type: "SET_CART_ITEMS";
-  payload: ContextCartItem[];
+  payload: CartItem[];
 }
 
 export interface SetCartItemQuantityAction {
@@ -34,7 +35,7 @@ const ShoppingCartReducer = (state: State, action: Action): State => {
     case "SET_CART_ITEM_QUANTITY":
       return {
         cartItems: state.cartItems.map((cartItem) => {
-          if (cartItem.cartItem.id === action.payload.cartItemId) {
+          if (cartItem.id === action.payload.cartItemId) {
             return {
               ...cartItem,
               amount: action.payload.quantity,
@@ -47,7 +48,7 @@ const ShoppingCartReducer = (state: State, action: Action): State => {
       return {
         ...state.cartItems,
         cartItems: state.cartItems.filter(
-          (cartItem) => cartItem.cartItem.id !== action.payload.cartItemId
+          (cartItem) => cartItem.id !== action.payload.cartItemId
         ),
       };
 

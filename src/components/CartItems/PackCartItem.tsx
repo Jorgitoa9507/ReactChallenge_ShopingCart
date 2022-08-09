@@ -7,6 +7,7 @@ import QuantitySelector from "./QuantitySelector";
 
 export interface PackCartItemProps {
   cartItem: CartItem;
+  onDelete: (id: string) => void;
 }
 
 const ShoopingListItem = styled("span")(({ theme }) => ({
@@ -30,7 +31,7 @@ const ItemDescription = styled("span")(({ theme }) => ({
   color: theme.palette.dark["07"],
 }));
 
-const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem }) => {
+const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem, onDelete }) => {
   const item = cartItem.item as ItemsPack;
 
   return (
@@ -139,7 +140,10 @@ const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem }) => {
               })}>
               |
             </Typography>
-            <DeleteButton variant="text" disableRipple={true}>
+            <DeleteButton
+              onClick={() => onDelete(cartItem.id)}
+              variant="text"
+              disableRipple={true}>
               Remove
             </DeleteButton>
           </Stack>

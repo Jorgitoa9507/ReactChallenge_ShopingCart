@@ -6,13 +6,8 @@ import ShoppingCartReducer, {
   SetCartItemsAction,
 } from "./shoppingCartReducer";
 
-export interface ContextCartItem {
-  cartItem: CartItem;
-  quantity: number;
-}
-
 export interface State {
-  cartItems: ContextCartItem[];
+  cartItems: CartItem[];
 }
 
 export interface Store {
