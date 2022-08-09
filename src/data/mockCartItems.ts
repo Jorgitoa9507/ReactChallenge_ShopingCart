@@ -9,7 +9,8 @@ const SHOPPING_ITEMS: ShoppingItem[] = [
     id: "1",
     name: "Cardboard Box",
     description: "container",
-    minimunAmount: 1,
+    minimunAmount: 10,
+    posibleAmounts: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
     image: box,
     price: 9.5,
   },
@@ -17,7 +18,9 @@ const SHOPPING_ITEMS: ShoppingItem[] = [
     id: "2",
     name: "Basic T-Shirt",
     description: "Green, Small",
-    minimunAmount: 1,
+    minimunAmount: 24,
+    posibleAmounts: [24, 30, 40, 50, 60, 70, 80, 90, 100],
+    priceRange: [10, 24],
     image: tshirt,
     price: 13.5,
   },
@@ -25,7 +28,8 @@ const SHOPPING_ITEMS: ShoppingItem[] = [
     id: "3",
     name: "Woman bottle",
     description: "Blue",
-    minimunAmount: 1,
+    minimunAmount: 10,
+    posibleAmounts: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
     image: waterBottle,
     price: 36.5,
   },
@@ -38,6 +42,7 @@ export const CART_ITEMS: CartItem[] = [
       id: "1",
       name: "My Christmas pack",
       shoppingItems: SHOPPING_ITEMS,
+      posibleAmounts: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
     },
     amount: 50,
   },
@@ -52,3 +57,7 @@ export const CART_ITEMS: CartItem[] = [
     amount: 10,
   },
 ];
+
+export const SUGESTED_ITEMS = new Array<ShoppingItem>(4).fill(
+  SHOPPING_ITEMS[1]
+);

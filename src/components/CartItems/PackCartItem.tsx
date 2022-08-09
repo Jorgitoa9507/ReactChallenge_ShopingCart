@@ -3,6 +3,7 @@ import CartItem from "../../models/CartItem";
 import ItemsPack from "../../models/ItemsPack";
 import { DeleteButton } from "./SingleCartItem";
 import { styled } from "@mui/material/styles";
+import QuantitySelector from "./QuantitySelector";
 
 export interface PackCartItemProps {
   cartItem: CartItem;
@@ -106,7 +107,7 @@ const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem }) => {
           <Typography
             variant="subtitle2"
             fontWeight={(theme) => theme.typography.fontWeightBold}>
-            Quantity: {cartItem.amount}
+            Quantity: <QuantitySelector values={item.posibleAmounts} />
           </Typography>
           <Stack
             spacing={"4px"}

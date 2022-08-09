@@ -3,6 +3,7 @@ import CartItem from "../../models/CartItem";
 import ShoppingItem from "../../models/ShoppingItem";
 import { DeleteOutline } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
+import QuantitySelector from "./QuantitySelector";
 
 export const DeleteButton = styled(Button)(({ theme }) => ({
   fontSize: 12,
@@ -49,7 +50,12 @@ const SingleCartItem: React.FC<SingleCartItemProps> = ({ cartItem }) => {
           <Typography
             variant="subtitle2"
             fontWeight={(theme) => theme.typography.fontWeightBold}>
-            Quantity: {cartItem.amount}
+            Quantity:{" "}
+            <QuantitySelector
+              deafultValue={item.minimunAmount}
+              values={item.posibleAmounts}
+            />
+            {/* cartItem.amount */}
           </Typography>
           <DeleteButton
             variant="text"
