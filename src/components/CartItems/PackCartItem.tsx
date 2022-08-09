@@ -97,7 +97,7 @@ const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem }) => {
             PACK
           </Box>
         </Stack>
-        <Stack direction="column" spacing={1}>
+        <Stack direction="column" spacing={1} sx={{ paddingTop: "8px" }}>
           <Typography
             variant="subtitle1"
             fontWeight={(theme) => theme.typography.fontWeightBold}>
@@ -130,7 +130,7 @@ const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem }) => {
             </DeleteButton>
             <Typography
               sx={(theme) => ({
-                color: theme.palette.dark["06"],
+                color: theme.palette.dark["03"],
                 fontSize: 12,
                 fontWeight: theme.typography.fontWeightBold,
                 marginLeft: "2px !important",
