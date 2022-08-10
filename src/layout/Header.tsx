@@ -1,10 +1,7 @@
 import { styled, alpha } from "@mui/material/styles";
 import { AppBar, Box, Toolbar, IconButton, InputBase } from "@mui/material";
-import {
-  SearchOutlined,
-  PersonOutline,
-  ShoppingBagOutlined,
-} from "@mui/icons-material";
+import { AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
+import { HiOutlineShoppingBag } from "react-icons/hi";
 import LinksMenu from "../components/LinksMenu";
 import { useShopingCartContext } from "../context/shoppingCartState";
 
@@ -32,7 +29,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
 }));
 
-const LogoBox = styled("div")(({ theme }) => ({
+export const LogoBox = styled("div")(({ theme }) => ({
   width: 172,
   height: 48,
   backgroundColor: theme.palette.dark["09"],
@@ -76,6 +73,7 @@ export default function Header() {
           justifyContent: "center",
           boxShadow: "none",
           paddingLeft: theme.spacing(8),
+          paddingRight: theme.spacing(8),
         })}>
         <Toolbar>
           <Box
@@ -91,7 +89,7 @@ export default function Header() {
             </LogoBox>
             <Search sx={{ flexGrow: 1 }}>
               <SearchIconWrapper>
-                <SearchOutlined />
+                <AiOutlineSearch fontSize={30} />
               </SearchIconWrapper>
               <SearchInput
                 placeholder="Search products"
@@ -101,7 +99,8 @@ export default function Header() {
           </Box>
           <Box sx={{ flexGrow: 1, textAlign: "end" }}>
             <IconButton size="large" color="inherit">
-              <PersonOutline fontSize="large" />
+              <AiOutlineUser fontSize={34} />
+              {/* <PersonOutline fontSize="large" /> */}
               <span style={{ fontSize: 15, paddingLeft: 5 }}>Sign in</span>
             </IconButton>
             <IconButton
@@ -113,11 +112,12 @@ export default function Header() {
                   content: `"${state.cartItems.length}"`,
                   position: "absolute",
                   fontSize: "10px",
-                  top: "29px",
+                  top: "28.5px",
                   left: "26.5px",
                 },
               }}>
-              <ShoppingBagOutlined fontSize="large" />
+              <HiOutlineShoppingBag fontSize={34} />
+              {/* <ShoppingBagOutlined fontSize="large" /> */}
               <span style={{ fontSize: 15, paddingLeft: 5 }}>Cart</span>
             </IconButton>
           </Box>

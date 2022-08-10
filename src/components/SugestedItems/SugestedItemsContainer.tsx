@@ -4,14 +4,10 @@ import SugestedItemCard from "./SugestedItemCard";
 
 const SugestedItemsContainer: React.FC = () => {
   return (
-    <Box sx={{ paddingLeft: "24px" }}>
+    <Box>
       <Stack spacing={2}>
         <Typography variant="h1">You might also like</Typography>
-        <Grid
-          container
-          spacing={2}
-          sx={{ marginLeft: "-16px !important" }}
-          justifyContent="space-between">
+        <Grid container justifyContent="space-between" spacing={"24px"}>
           {SUGESTED_ITEMS.map((item, index) => (
             <Grid key={item.id + index} item>
               <SugestedItemCard item={item} />

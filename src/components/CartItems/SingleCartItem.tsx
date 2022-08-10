@@ -1,10 +1,9 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import CartItem from "../../models/CartItem";
 import ShoppingItem from "../../models/ShoppingItem";
-import { DeleteOutline } from "@mui/icons-material";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { styled } from "@mui/material/styles";
 import QuantitySelector from "./QuantitySelector";
-import { useShopingCartContext } from "../../context/shoppingCartState";
 
 export const DeleteButton = styled(Button)(({ theme }) => ({
   fontSize: 12,
@@ -69,7 +68,7 @@ const SingleCartItem: React.FC<SingleCartItemProps> = ({
             onClick={() => onDelete(cartItem.id)}
             variant="text"
             disableRipple={true}
-            startIcon={<DeleteOutline />}>
+            startIcon={<RiDeleteBinLine />}>
             Remove
           </DeleteButton>
         </Stack>

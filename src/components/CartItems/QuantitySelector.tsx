@@ -1,4 +1,4 @@
-import { KeyboardArrowDown } from "@mui/icons-material";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { FormControl, MenuItem, NativeSelect, Select } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -34,7 +34,7 @@ const CustomSelect = styled(NativeSelect)(({ theme }) => ({
     marginLeft: "-4px",
   },
   "& .MuiSvgIcon-root": {
-    marginLeft: "-33px",
+    marginLeft: "-36px",
     zIndex: 1,
   },
 }));
@@ -64,14 +64,7 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
         inputProps={{
           name: "quantity",
         }}
-        IconComponent={() => (
-          <KeyboardArrowDown
-            sx={(theme) => ({
-              color: theme.palette.dark["01"],
-              fontSize: "16px",
-            })}
-          />
-        )}>
+        IconComponent={() => <MdKeyboardArrowDown />}>
         {values.map((val) => (
           <CustomOption key={val} value={val}>
             {val}
