@@ -1,7 +1,7 @@
 import { Stack, Link, Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const Item = styled(Link)(({ theme }) => ({
+export const LinkItem = styled(Link)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.dark["04"],
@@ -24,12 +24,12 @@ export default function LinksMenu() {
         paddingLeft: theme.spacing(10),
       })}>
       <Stack direction="row" spacing={1} sx={{ height: "100%" }}>
-        <Item>All products</Item>
-        <Item>Packaging</Item>
-        <Item>Drinkware</Item>
-        <Item>Apparel</Item>
-        <Item>Notebooks</Item>
-        <Item>Backpacks</Item>
+        <LinkItem>All products</LinkItem>
+        <LinkItem>Packaging</LinkItem>
+        <LinkItem>Drinkware</LinkItem>
+        <LinkItem>Apparel</LinkItem>
+        <LinkItem>Notebooks</LinkItem>
+        <LinkItem>Backpacks</LinkItem>
       </Stack>
     </Box>
   );

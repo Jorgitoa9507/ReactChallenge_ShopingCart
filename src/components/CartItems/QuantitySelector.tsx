@@ -33,9 +33,10 @@ const CustomSelect = styled(NativeSelect)(({ theme }) => ({
     marginTop: "1.5px",
     marginLeft: "-4px",
   },
-  "& .MuiSvgIcon-root": {
-    marginLeft: "-36px",
+  "& svg": {
+    marginLeft: "-38px",
     zIndex: 1,
+    fontSize: "22px",
   },
 }));
 
