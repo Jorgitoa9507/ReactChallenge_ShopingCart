@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 export interface QuantitySelectorProps {
   values: number[];
   deafultValue?: number;
+  onChange: (value: number) => void;
 }
 
 const CustomSelect = styled(NativeSelect)(({ theme }) => ({
@@ -45,13 +46,20 @@ const CustomOption = styled("option")(({ theme }) => ({
 const QuantitySelector: React.FC<QuantitySelectorProps> = ({
   deafultValue,
   values,
+  onChange,
 }) => {
+  function changeQuantityHandler(event: React.ChangeEvent<{ value: unknown }>) {
+    const value = event.target.value as number;
+    onChange(value);
+  }
+
   return (
     <FormControl
       sx={(theme) => ({
         color: theme.palette.dark["01"],
       })}>
       <CustomSelect
+        onChange={changeQuantityHandler}
         defaultValue={deafultValue ?? values[0]}
         inputProps={{
           name: "quantity",

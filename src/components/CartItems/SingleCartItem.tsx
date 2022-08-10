@@ -24,11 +24,13 @@ export const DeleteButton = styled(Button)(({ theme }) => ({
 export interface SingleCartItemProps {
   cartItem: CartItem;
   onDelete: (id: string) => void;
+  onChangeQuantity: (quantity: number) => void;
 }
 
 const SingleCartItem: React.FC<SingleCartItemProps> = ({
   cartItem,
   onDelete,
+  onChangeQuantity,
 }) => {
   const item = cartItem.item as ShoppingItem;
 
@@ -57,7 +59,8 @@ const SingleCartItem: React.FC<SingleCartItemProps> = ({
             fontWeight={(theme) => theme.typography.fontWeightBold}>
             Quantity:{" "}
             <QuantitySelector
-              deafultValue={item.minimunAmount}
+              onChange={onChangeQuantity}
+              deafultValue={cartItem.amount}
               values={item.posibleAmounts}
             />
             {/* cartItem.amount */}

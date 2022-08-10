@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { useShopingCartContext } from "../../context/shoppingCartState";
-import { isItemsPack } from "../../helpers/isItemsPack";
+import { calcPackPrice, isItemsPack } from "../../helpers/utils";
 import CartItem from "../../models/CartItem";
 import ItemsPack from "../../models/ItemsPack";
 import PackCartItem from "./PackCartItem";
@@ -22,16 +22,30 @@ const CartItemComponent: React.FC<CartItemComponentProps> = ({ cartItem }) => {
     });
   }
 
-  function calcPackPrice(pack: ItemsPack) {
-    return pack.shoppingItems.reduce((acc, item) => acc + item.price, 0);
+  function updateQuantityHandler(quantity: number) {
+    dispatch?.({
+      type: "SET_CART_ITEM_QUANTITY",
+      payload: {
+        cartItemId: cartItem.id,
+        quantity,
+      },
+    });
   }
 
   return (
     <Stack direction="row" justifyContent="space-between">
       {isItemsPack(cartItem.item) ? (
-        <PackCartItem cartItem={cartItem} onDelete={deleteItemHandler} />
+        <PackCartItem
+          cartItem={cartItem}
+          onDelete={deleteItemHandler}
+          onChangeQuantity={updateQuantityHandler}
+        />
       ) : (
-        <SingleCartItem cartItem={cartItem} onDelete={deleteItemHandler} />
+        <SingleCartItem
+          cartItem={cartItem}
+          onDelete={deleteItemHandler}
+          onChangeQuantity={updateQuantityHandler}
+        />
       )}
       <Stack spacing={1} alignItems="end">
         <Typography

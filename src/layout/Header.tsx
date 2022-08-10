@@ -6,6 +6,7 @@ import {
   ShoppingBagOutlined,
 } from "@mui/icons-material";
 import LinksMenu from "../components/LinksMenu";
+import { useShopingCartContext } from "../context/shoppingCartState";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -63,6 +64,8 @@ const SearchInput = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const { state } = useShopingCartContext();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -96,13 +99,24 @@ export default function Header() {
               />
             </Search>
           </Box>
-
           <Box sx={{ flexGrow: 1, textAlign: "end" }}>
             <IconButton size="large" color="inherit">
               <PersonOutline fontSize="large" />
               <span style={{ fontSize: 15, paddingLeft: 5 }}>Sign in</span>
             </IconButton>
-            <IconButton size="large" color="inherit">
+            <IconButton
+              size="large"
+              color="inherit"
+              sx={{
+                position: "relative",
+                "::before": {
+                  content: `"${state.cartItems.length}"`,
+                  position: "absolute",
+                  fontSize: "10px",
+                  top: "29px",
+                  left: "26.5px",
+                },
+              }}>
               <ShoppingBagOutlined fontSize="large" />
               <span style={{ fontSize: 15, paddingLeft: 5 }}>Cart</span>
             </IconButton>

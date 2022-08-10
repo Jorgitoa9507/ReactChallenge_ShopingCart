@@ -1,6 +1,6 @@
 import { Button, Divider, Stack, Typography } from "@mui/material";
 import { useShopingCartContext } from "../context/shoppingCartState";
-import { isItemsPack } from "../helpers/isItemsPack";
+import { calcPackPrice, isItemsPack } from "../helpers/utils";
 
 const OrderSummary: React.FC = () => {
   const { state } = useShopingCartContext();
@@ -9,12 +9,7 @@ const OrderSummary: React.FC = () => {
     return (
       acc +
       item.amount *
-        (isItemsPack(item.item)
-          ? item.item.shoppingItems.reduce(
-              (packAcc, packItem) => packAcc + packItem.price,
-              0
-            )
-          : item.item.price)
+        (isItemsPack(item.item) ? calcPackPrice(item.item) : item.item.price)
     );
   }, 0);
 
@@ -39,12 +34,14 @@ const OrderSummary: React.FC = () => {
           variant="subtitle1"
           color={(theme) => theme.palette.dark["01"]}
           sx={(theme) => ({ fontWeight: theme.typography.fontWeightMedium })}>
-          Total: $
+          Total:
         </Typography>
         <Typography variant="h1">${total.toFixed(2)}</Typography>
       </Stack>
       <Stack direction="column" spacing={1}>
-        <Button variant="contained">Proceed to Checkout</Button>
+        {state.cartItems?.length > 0 && (
+          <Button variant="contained">Proceed to Checkout</Button>
+        )}
         <Button variant="outlined">Continue shopping</Button>
       </Stack>
     </Stack>

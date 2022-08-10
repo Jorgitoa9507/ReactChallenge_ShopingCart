@@ -8,6 +8,7 @@ import QuantitySelector from "./QuantitySelector";
 export interface PackCartItemProps {
   cartItem: CartItem;
   onDelete: (id: string) => void;
+  onChangeQuantity: (quantity: number) => void;
 }
 
 const ShoopingListItem = styled("span")(({ theme }) => ({
@@ -31,7 +32,11 @@ const ItemDescription = styled("span")(({ theme }) => ({
   color: theme.palette.dark["07"],
 }));
 
-const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem, onDelete }) => {
+const PackCartItem: React.FC<PackCartItemProps> = ({
+  cartItem,
+  onDelete,
+  onChangeQuantity,
+}) => {
   const item = cartItem.item as ItemsPack;
 
   return (
@@ -108,7 +113,12 @@ const PackCartItem: React.FC<PackCartItemProps> = ({ cartItem, onDelete }) => {
           <Typography
             variant="subtitle2"
             fontWeight={(theme) => theme.typography.fontWeightBold}>
-            Quantity: <QuantitySelector values={item.posibleAmounts} />
+            Quantity:{" "}
+            <QuantitySelector
+              values={item.posibleAmounts}
+              onChange={onChangeQuantity}
+              deafultValue={cartItem.amount}
+            />
           </Typography>
           <Stack
             spacing={"4px"}
