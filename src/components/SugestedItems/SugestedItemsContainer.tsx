@@ -7,9 +7,12 @@ const SugestedItemsContainer: React.FC = () => {
     <Box>
       <Stack spacing={2}>
         <Typography variant="h1">You might also like</Typography>
-        <Grid container justifyContent="space-between" spacing={"24px"}>
+        <Grid container spacing={"24px"} justifyContent="space-between">
           {SUGESTED_ITEMS.map((item, index) => (
-            <Grid key={item.id + index} item>
+            <Grid
+              key={item.id + index}
+              item
+              paddingLeft={index == 0 ? "0px !important" : ""}>
               <SugestedItemCard item={item} />
             </Grid>
           ))}

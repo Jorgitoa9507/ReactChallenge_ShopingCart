@@ -41,8 +41,12 @@ export default function Footer() {
         backgroundColor: theme.palette.dark["10"],
         padding: "80px 92px 0px",
       })}>
-      <Grid container spacing={"200px"} paddingBottom="40px !important">
-        <Grid item xs={3}>
+      <Grid
+        container
+        spacing={"200px"}
+        paddingBottom="40px !important"
+        columns={25}>
+        <Grid item xs={7}>
           <Stack spacing={3}>
             <LogoBox>LOGO</LogoBox>
             <Typography
@@ -74,7 +78,7 @@ export default function Footer() {
             </Stack>
           </Stack>
         </Grid>
-        <Grid item>
+        <Grid item paddingLeft="100px !important">
           <FooterLinksMenu
             title="Our Company"
             linksName={[
@@ -103,7 +107,7 @@ export default function Footer() {
         direction="row"
         justifyContent="space-between"
         sx={{
-          padding: "110px 0px 76px 0px",
+          padding: "80px 0px 76px 0px",
         }}>
         <Typography
           sx={(theme) => ({

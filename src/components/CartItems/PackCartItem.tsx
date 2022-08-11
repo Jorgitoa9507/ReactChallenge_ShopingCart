@@ -60,12 +60,21 @@ const PackCartItem: React.FC<PackCartItemProps> = ({
             })}>
             <Grid container spacing={1} sx={{ marginTop: 0 }}>
               {item.shoppingItems.map((shoppI, index) => {
-                const gridXs =
-                  item.shoppingItems.length % 2 === 0
-                    ? 6
-                    : index === 0
-                    ? 12
-                    : 6;
+                let gridXs = 12;
+                let backgroundPosition = "center";
+                if (item.shoppingItems.length % 2 === 0) {
+                  if (index !== 0) {
+                    gridXs = 6;
+                    backgroundPosition = index % 2 === 0 ? "8px" : "16px";
+                  } else {
+                    gridXs = 6;
+                  }
+                } else {
+                  if (index !== 0) {
+                    backgroundPosition = index % 2 === 0 ? "8px" : "16px";
+                    gridXs = 6;
+                  }
+                }
 
                 return (
                   <Grid
@@ -79,7 +88,9 @@ const PackCartItem: React.FC<PackCartItemProps> = ({
                       sx={(theme) => ({
                         height: 40,
                         width: 47,
-                        background: `url(${shoppI.image}) no-repeat center center`,
+                        background: `url(${shoppI.image})`,
+                        backgroundPosition: backgroundPosition,
+                        backgroundRepeat: "no-repeat",
                         backgroundColor: theme.palette.dark["10"],
                         backgroundSize: "contain",
                       })}
